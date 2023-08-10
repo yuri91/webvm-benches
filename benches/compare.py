@@ -19,6 +19,6 @@ target = collect(sys.argv[2])
 
 print(f"{sys.argv[2]}/{sys.argv[1]}")
 for b in baseline:
-    avgbaseline = np.mean(baseline[b])
-    avgtarget = np.mean(target[b])
+    avgbaseline = np.mean(baseline[b][1:])
+    avgtarget = np.mean(target[b][1:])
     print(f"{b}: {avgtarget/avgbaseline}")
