@@ -14,11 +14,15 @@ def collect(fname):
             benches[name] = samples
     return benches
 
-baseline = collect(sys.argv[1])
-target = collect(sys.argv[2])
+data1 = collect(sys.argv[1])
+data2 = collect(sys.argv[2])
 
+avgavg = 0
 print(f"{sys.argv[2]}/{sys.argv[1]}")
-for b in baseline:
-    avgbaseline = np.mean(baseline[b][1:])
-    avgtarget = np.mean(target[b][1:])
-    print(f"{b}: {avgtarget/avgbaseline}")
+for b in data1:
+    avg1 = np.mean(data1[b][1:])
+    avg2 = np.mean(data2[b][1:])
+    avgavg += avg2/avg1
+    print(f"{b}: {avg2/avg1}")
+
+print(f"\ntotal average: {avgavg/len(data1)}")
